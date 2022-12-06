@@ -1,21 +1,44 @@
 import './App.css';
+import { useState } from 'react';
+import { Outlet, Link, Form } from "react-router-dom";
+//import Cart from './components/cart';
+//import { getContacts, createContact } from "./contacts";
+import products from './products'
+// export async function loader() {
+//   const contacts = await getContacts();
+//   return { contacts };
+// }
+
+// export async function action() {
+//   await createContact();
+// }
 
 function App() {
 
-  function changeTab() {
+  const [item, setItem] = useState({
+    name: '',
+    category: '',
+    price: '',
+    quantity: '',
+    description: '',
+    image: ''
+  })
 
+
+  function changeTab() {
+    console.log('hellow')
   }
 
   return (
     <div className="App">
       <header className="App-header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <p>Hello from App</p>
+        <p>Welcome to the Store</p>
         <button onClick={changeTab}>Click Me To switch</button>
       </header>
 
       <div id="sidebar">
-        <h1>React Router Contacts</h1>
+        <h1>Shossp Sidebar</h1>
         <div>
           <form id="search-form" role="search">
             <input
@@ -35,22 +58,31 @@ function App() {
               aria-live="polite"
             ></div>
           </form>
-          <form method="post">
+          <Form method="post">
             <button type="submit">New</button>
-          </form>
+          </Form>
         </div>
         <nav>
-          <ul>
-            <li>
-              <a href={`cart`}>Your Name</a>
-            </li>
-            <li>
-              <a href={`contacts/2`}>Your Friend</a>
-            </li>
-          </ul>
+            <ul>
+                <li >dwdwdwdw
+                  <Link to={`Cart`}>
+                  Cart
+                  </Link>
+                </li>
+          <li>
+            {products.name}
+          </li>
+            </ul>
+
+            <p>
+              <i>No contacts</i>
+            </p>
+  
         </nav>
       </div>
-      <div id="detail"></div>
+      <div id="detail">
+      <Outlet />
+      </div>
   
 
     </div>
