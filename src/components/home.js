@@ -21,7 +21,7 @@ function addtoCart (item) {
                 <button onClick={() => {addtoCart(item)}} className="buy">Add to Cart</button>
               </div>
     ))}
-  
+
     </div>
   )
 }

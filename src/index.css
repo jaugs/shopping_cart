@@ -88,6 +88,9 @@ button:active {
   flex-wrap: wrap;
 }
 
+.cartIcon, .homeIcon {
+  width: 2.5rem;
+}
 
 
 

@@ -1,5 +1,5 @@
-import { Form } from "react-router-dom";
-
+import { Link, useLocation } from "react-router-dom";
+import home from '../images/home.svg'
 export default function Cart(props) {
 
 
@@ -13,19 +13,19 @@ export default function Cart(props) {
   //   image: ''
   // }])
 
-
+  // const [cartItems: cartInfo] = useLocation()
+  const { state: { cartInfo } = {} } = useLocation();
 
 function displayProducts() {
-  console.log(props.products[0].name)
+ // console.log(props.location.state.cartInfo)
+  console.log(cartInfo)
 }
 
-
-  return (
-    <div id="cart">
-
-   <button onClick={displayProducts}>eweggw
-   </button>
-        <div>
+return (
+  <div id="cart">
+    <h2>Your Shopping Cart:</h2>
+    <button onClick={displayProducts}>eweggw</button>
+        {/* <div>
           <Form action="edit">
             <button type="submit">Edssit</button>
           </Form>
@@ -38,7 +38,30 @@ function displayProducts() {
           >
             <button type="submit">Delete</button>
           </Form>
-        </div> </div>
+        </div>  */}
+
+        <Link
+        to='/'
+        // state={{cartInfo: cartItems}}
+        className='cartButton'>
+        <img src={home} className="homeIcon" alt="homepage" />
+        
+      </Link>
+    <div className="itemContainer">
+      {/* {props.cartItems.map(item => (
+              <div className="cartCard" key ={item.name}>
+                <span className="name"> {item.name}</span>
+                <div className="price">{item.price}</div>
+                <div className="description">{item.description}</div>
+               
+              </div>
+              ))} */}
+
+
+    </div>
+        
+        
+  </div>
   )
           }
 

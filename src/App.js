@@ -1,10 +1,11 @@
 import './App.css';
 import { useState } from 'react';
-import { Outlet, Link, Form } from "react-router-dom";
+import { Outlet, Link, Form, useNavigate } from "react-router-dom";
 //import Cart from './components/cart';
 //import { getContacts, createContact } from "./contacts";
 import products from './products'
 import Home from './components/home';
+import shoppingCart from './images/cart.svg';
 // export async function loader() {
 //   const contacts = await getContacts();
 //   return { contacts };
@@ -25,17 +26,34 @@ function App() {
     image: ''
   }])
 
+  const navigate = useNavigate()
 
-  function changeTab() {
-    console.log('hellow')
-  }
+ function findProps() {
+  console.log(cartItems)
+  console.log(typeof(cartItems))
+ }
 
   return (
     <div className="App">
       <header className="header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <p>Welcome to the Store</p>
-        <button onClick={changeTab}>Click Me To switch</button>
+        <h1>Welcome to the Store</h1>
+       
+      
+      <Link
+        to='/cart'
+        state={{cartInfo: cartItems}}
+        className='cartButton'>
+        <img src={shoppingCart} className="cartIcon" alt="shopping cart" />
+        <p>${cartItems.reduce((total, cartItem) => total += parseInt(cartItem.price), 0)}</p>
+      </Link>
+
+{/* 
+      <button onClick={() => navigate(`/cart?cartItems=${cartItems}`)} className='cartButton' >
+        <img src={shoppingCart} className="cartIcon" alt="shopping cart" />
+        <p>${cartItems.reduce((total, cartItem) => total += parseInt(cartItem.price), 0)}</p>
+      </button> */}
+
+        
       </header>
 
       <div id="sidebar">

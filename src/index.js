@@ -20,16 +20,16 @@ const router = createBrowserRouter([
    // action: rootAction,
     children: [
       {
-        path: "cart",
-        element: <Cart products = {products} />,
+        path: "cartmini",
+        element: <miniCart products = {products} />,
       },
     ],
   },
-  // {
-  //   path: "home",
-  //   element: <Home />,
-  //   errorElement: <ErrorPage />,
-  // },
+  {
+    path: "cart",
+    element: <Cart  />,
+    errorElement: <ErrorPage />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
