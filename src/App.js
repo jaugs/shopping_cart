@@ -4,6 +4,7 @@ import { Outlet, Link, Form } from "react-router-dom";
 //import Cart from './components/cart';
 //import { getContacts, createContact } from "./contacts";
 import products from './products'
+import Home from './components/home';
 // export async function loader() {
 //   const contacts = await getContacts();
 //   return { contacts };
@@ -15,14 +16,14 @@ import products from './products'
 
 function App() {
 
-  const [item, setItem] = useState({
+  const [cartItems, setcartItems] = useState([{
     name: '',
     category: '',
     price: '',
     quantity: '',
     description: '',
     image: ''
-  })
+  }])
 
 
   function changeTab() {
@@ -31,7 +32,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <p>Welcome to the Store</p>
         <button onClick={changeTab}>Click Me To switch</button>
@@ -80,10 +81,18 @@ function App() {
   
         </nav>
       </div>
-      <div id="detail">
+      <Home 
+      products = {products}
+      cartItems= {cartItems}
+      setcartItems = {setcartItems}>
+    
+      </Home>
+
+
+      {/* <div id="detail">
       <Outlet />
-      </div>
-  
+      </div> */}
+    <div className='footer'>by JAUGS 2022</div>
 
     </div>
   );

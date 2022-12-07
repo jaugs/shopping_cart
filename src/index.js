@@ -9,7 +9,8 @@ import {
 import ErrorPage from "./components/error";
 import Cart from "./components/cart";
 import App from "./App";
-
+import products from "./products"
+//import Home from './components/home';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,11 +21,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "cart",
-        element: <Cart />,
+        element: <Cart products = {products} />,
       },
     ],
   },
-   
+  // {
+  //   path: "home",
+  //   element: <Home />,
+  //   errorElement: <ErrorPage />,
+  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

@@ -2,11 +2,29 @@ import { Form } from "react-router-dom";
 
 export default function Cart(props) {
 
+
+
+  // const [cartItems, setcartItems] = useState([{
+  //   name: '',
+  //   category: '',
+  //   price: '',
+  //   quantity: '',
+  //   description: '',
+  //   image: ''
+  // }])
+
+
+
+function displayProducts() {
+  console.log(props.products[0].name)
+}
+
+
   return (
-    <div id="contact">
+    <div id="cart">
 
-
-    <p> fgorweognrwengreinlgerg</p>
+   <button onClick={displayProducts}>eweggw
+   </button>
         <div>
           <Form action="edit">
             <button type="submit">Edssit</button>

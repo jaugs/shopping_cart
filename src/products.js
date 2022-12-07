@@ -5,52 +5,70 @@ const products = [
     {name: 'Driver',
      category: 'club',
      price: '$199',
-     description: 'New TRS Mach 3 Epic Distance Driver with 10deg Loft, Tungsten Liner'
+     description: 'New TRS Mach 3 Epic Distance Driver with 10deg Loft, Tungsten Liner',
+     id: 100,
+     quantity: 0,
     },
     {name: 'Irons',
      category: 'club',
      price: '$899',
-     description: 'New 4-PW Iron Set, Shiny Chrome Finish, Blue Precision Grips, Standard Shaft Length and Flex'
+     description: 'New 4-PW Iron Set, Shiny Chrome Finish, Blue Precision Grips, Standard Shaft Length and Flex',
+     id: 101,
+     quantity: 0,
     },
     {name: 'Sand Wedge',
      category: 'club',
      price: '$99',
-     description: 'Sand Wedge 56 Degree Wedge, Chrome Satin Max Control Milled P-Grind'
+     description: 'Sand Wedge 56 Degree Wedge, Chrome Satin Max Control Milled P-Grind',
+     id: 102,
+     quantity: 0,
     },
     {name: 'Putter',
      category: 'club',
      price: '$199',
-     description: 'Johnny Augsburger 10EQP Model, Oversized Grip'
+     description: 'Johnny Augsburger 10EQP Model, Oversized Grip',
+     id: 103,
+     quantity: 0,
     },
     {name: 'Lob Wedge',
      category: 'club',
      price: '$159',
-     description: 'Lob Wedge 60 Degree Wedge, Black Satin Max Height Milled S-Grind'
+     description: 'Lob Wedge 60 Degree Wedge, Black Satin Max Height Milled S-Grind',
+     id: 104,
+     quantity: 0,
     },
     {name: 'Star Bag',
      category: 'bag',
      price: '$189',
-     description: 'Leather Like Finish, 14-Way Divider, Velvet-Lined Valuables Pocket.'
+     description: 'Leather Like Finish, 14-Way Divider, Velvet-Lined Valuables Pocket.',
+     id: 105,
+     quantity: 0,
     },
     {name: 'Galaxy Bag',
      category: 'bag',
      price: '$139',
-     description: 'Extra-Light Stand Bag, 7-Way Divider with Tru-Feel Suspension Harness'
+     description: 'Extra-Light Stand Bag, 7-Way Divider with Tru-Feel Suspension Harness',
+     id: 106,
+     quantity: 0,
     },
     {name: 'Pro Z1 Balls',
      category: 'ball',
      price: '$30',
-     description: '36 pack, Max Distance'
+     description: '36 pack, Max Distance',
+     id: 107,
+     quantity: 0,
     },
     {name: 'Z3 Soft Balls',
     category: 'ball',
     price: '$20',
-    description: '36 pack, Max Control'
+    description: '36 pack, Max Control',
+    id: 108,
+     quantity: 0,
    },
 ]
 
 
-function getProducts() {
-    return products
-}
-export default getProducts;
+// function getProducts() {
+//     return products
+// }
+export default products;
