@@ -1,14 +1,15 @@
 import './App.css';
 import { useState } from 'react';
-import { Link, Form, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 //import Cart from './components/cart';
-//import { getContacts, createContact } from "./contacts";
 import products from './products'
 import Home from './components/home';
 import shoppingCart from './images/cart.svg';
 
 
 function App() {
+
+  const [filteredProducts, setFilteredProducts] = useState(products)
 
   const [totalPrice, setTotalPrice] = useState(0)
 
@@ -48,6 +49,15 @@ function findprops() {
   console.log(price)
 }
 
+function handleFilter(e) {
+  let newFilter = e.target.innerText
+  console.log(newFilter)
+  console.log(typeof(e.target.innerText))
+  let newProducts = products.filter(item => item.category === newFilter)
+  console.log(newProducts)
+  setFilteredProducts(newProducts)
+
+}
 
   return (
     <div className="App">
@@ -65,7 +75,6 @@ function findprops() {
       <button onClick={() => 
         navigate('/cart', {state: {cartInfo: cartItems}})} className='cartButton' >
         <img src={shoppingCart} className="cartIcon" alt="shopping cart" />
-        
         <p>${totalPrice}</p>
       </button>
 
@@ -73,7 +82,7 @@ function findprops() {
       </header>
 
       <div id="sidebar">
-        <h1>Shossp Sidebar</h1>
+        <h1>Search and Filter</h1>
         <div>
           <form id="search-form" role="search">
             <input
@@ -92,36 +101,39 @@ function findprops() {
               className="sr-only"
               aria-live="polite"
             ></div>
+             <button type="submit">New</button>
           </form>
-          <Form method="post">
-            <button type="submit">New</button>
-          </Form>
+           
         </div>
         <nav>
-            <ul>
-                <li >dwdwdwdw
-                  <Link to={`Cart`}>
-                  Cart
-                  </Link>
-                </li>
-          <li>
-            {products.name}
-          </li>
-            </ul>
-
-            <p>
-              <i>No contacts</i>
-            </p>
-  
+          <ul>
+            <li >
+              <Link to={`Cart`}>
+              Cart
+              </Link>
+            </li>
+            <li>
+              <button className="linkButton" onClick={handleFilter}>Clubs</button>
+            </li>
+            <li>
+              <button className="linkButton" onClick={handleFilter}>Bags</button>
+            </li>
+            <li>
+              <button className="linkButton" onClick={handleFilter}>Balls</button>
+            </li>
+            <li>
+              <button className="linkButton" onClick={handleFilter}>Accessories</button>
+            </li>
+          </ul>
         </nav>
       </div>
       <Home 
       totalPrice = {totalPrice}
       setTotalPrice = {setTotalPrice}
-      products = {products}
       cartItems= {cartItems}
-      setcartItems = {setcartItems}>
-    
+      setcartItems = {setcartItems}
+      products = {filteredProducts}
+      setFilteredProducts = {setFilteredProducts}>
       </Home>
 
 
