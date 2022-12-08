@@ -1,14 +1,27 @@
+//import { useState, useEffect } from 'react';
 
 const cartArr = []
 
 function Home(props) {
 
 
-function addtoCart (item) {
+
+  // useEffect(() => {
+  //   addtoCart()
+  // });
+  
+
+
+  function addtoCart (item) {
     cartArr.push(item)
-    console.log(cartArr)
+    //console.log(cartArr)
     props.setcartItems(cartArr)
-    console.log(props.cartItems)
+    //console.log(props.cartItems)
+    let price = props.cartItems.reduce((total, cartItem) => total += parseInt(cartItem.price), 0)
+    console.log(price)
+    if (price) {
+    props.setTotalPrice(price)
+    } else props.setTotalPrice(item.price)
     }
 
   return (

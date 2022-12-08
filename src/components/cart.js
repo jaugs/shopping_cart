@@ -1,69 +1,46 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import home from '../images/home.svg'
+
+
+
 export default function Cart(props) {
 
 
-
-  // const [cartItems, setcartItems] = useState([{
-  //   name: '',
-  //   category: '',
-  //   price: '',
-  //   quantity: '',
-  //   description: '',
-  //   image: ''
-  // }])
-
-  // const [cartItems: cartInfo] = useLocation()
   const { state: { cartInfo } = {} } = useLocation();
-
+  const navigate = useNavigate()
+  
 function displayProducts() {
- // console.log(props.location.state.cartInfo)
   console.log(cartInfo)
 }
 
 return (
   <div id="cart">
-    <h2>Your Shopping Cart:</h2>
-    <button onClick={displayProducts}>eweggw</button>
-        {/* <div>
-          <Form action="edit">
-            <button type="submit">Edssit</button>
-          </Form>
-          <Form
-            method="post"
-            action="destroy"
-            // onSubmit={(event) => {
-            
-            // }}
-          >
-            <button type="submit">Delete</button>
-          </Form>
-        </div>  */}
-
-        <Link
-        to='/'
-        // state={{cartInfo: cartItems}}
-        className='cartButton'>
+    <header className="header">
+      <h1>Welcome to the Store</h1>
+      <button onClick={() => 
+        navigate('/', {state: {cartItems: cartInfo}})} className='homeButton' >
         <img src={home} className="homeIcon" alt="homepage" />
+        <p>Home</p>
+      </button>
+    </header>
+
+    <button onClick={displayProducts}>eweggw</button>
         
-      </Link>
     <div className="itemContainer">
-      {/* {props.cartItems.map(item => (
+      {cartInfo.map(item => (
               <div className="cartCard" key ={item.name}>
                 <span className="name"> {item.name}</span>
                 <div className="price">{item.price}</div>
                 <div className="description">{item.description}</div>
                
               </div>
-              ))} */}
-
-
+              ))}
     </div>
         
-        
+    <div className='footer'>by JAUGS 2022</div>
   </div>
   )
-          }
+  }
 
 // function Favorite({ contact }) {
 //   // yes, this is a `let` for later
