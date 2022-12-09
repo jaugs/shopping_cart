@@ -1,5 +1,5 @@
 //import { useState, useEffect } from 'react';
-
+//import { driver } from "localforage"
 const cartArr = []
 
 function Home(props) {
@@ -31,6 +31,7 @@ function Home(props) {
                 <span className="name"> {item.name}</span>
                 <div className="price">{item.price}</div>
                 <div className="description">{item.description}</div>
+                <img src={item.image} className="cartIcon" alt="shopping cart" />
                 <button onClick={() => {addtoCart(item)}} className="buy">Add to Cart</button>
               </div>
     ))}

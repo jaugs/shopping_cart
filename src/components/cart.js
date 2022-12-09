@@ -35,6 +35,7 @@ return (
     <div className="itemContainer">
       {cartInfo.map(item => (
               <div className="cartCard" key ={item.name}>
+              <img src={item.image} className="cartIcon" alt="shopping cart" />
                 <span className="name"> {item.name}</span>
                 <div className="price">{item.price}</div>
                 <div className="description">{item.description}</div>
