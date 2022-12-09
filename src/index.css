@@ -64,7 +64,7 @@ button:active {
   flex-direction: column;
 }
 
-.App {
+.App, #Cart {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column: 1fr 1fr 1fr;
@@ -137,11 +137,11 @@ form[action$="destroy"] button {
   border-width: 0;
 }
 
-#root {
+/* #root {
   display: flex;
   height: 100%;
   width: 100%;
-}
+} */
 
 
 

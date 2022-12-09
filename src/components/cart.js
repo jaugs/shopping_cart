@@ -14,18 +14,24 @@ function displayProducts() {
 }
 
 return (
-  <div id="cart">
+  <div id="Cart">
     <header className="header">
       <h1>Welcome to the Store</h1>
+
       <button onClick={() => 
         navigate('/', {state: {cartItems: cartInfo}})} className='homeButton' >
         <img src={home} className="homeIcon" alt="homepage" />
         <p>Home</p>
       </button>
+      <button onClick={displayProducts}>eweggw</button>
     </header>
 
-    <button onClick={displayProducts}>eweggw</button>
+   
         
+    <div id="sidebar">
+        <h1>Search and Filter</h1>
+      </div>
+
     <div className="itemContainer">
       {cartInfo.map(item => (
               <div className="cartCard" key ={item.name}>
