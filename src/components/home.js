@@ -28,11 +28,11 @@ function Home(props) {
     <div id="home">
     {props.products.map(item => (
               <div className="productCard" key ={item.name}>
-                <span className="name"> {item.name}</span>
-                <div className="price">{item.price}</div>
-                <div className="description">{item.description}</div>
-                <img src={item.image} className="cartIcon" alt="shopping cart" />
-                <button onClick={() => {addtoCart(item)}} className="buy">Add to Cart</button>
+               <img src={item.image} className="productPic" alt={item.name}/>
+               <h3 className="name"> {item.name}</h3>
+               <div className="price">${item.price}</div>
+               <div className="description">{item.description}</div>
+               <button onClick={() => {addtoCart(item)}} className="buy">Add to Cart</button>
               </div>
     ))}
 

@@ -1,6 +1,6 @@
-html {
+/* html {
   box-sizing: border-box;
-}
+} */
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -22,6 +22,7 @@ body {
   line-height: 1.5;
   color: #121212;
 }
+
 textarea,
 input,
 button {
@@ -51,12 +52,8 @@ button:active {
   transform: translateY(1px);
 }
 
-.productCard {
-  border: 1px solid black;
-}
-
 #sidebar {
-  border:2px solid red;
+  
   width: 22rem;
   background-color: #f7f7f7;
   border-right: solid 1px #e3e3e3;
@@ -66,20 +63,38 @@ button:active {
 
 .App, #Cart {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 100px 4fr 40px;
+  grid-template-areas: 
+    "header header"
+    "sidebar home"
+    "footer footer";
 }
 
 .header {
-  grid-column-start: 1;
-  grid-column-end: 3;
-  border: 3px solid blue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d3d3d3;
+  grid-area: header;
+  background-color: #f7f7f7;
+}
+
+.cartButton {
+  gap: 15px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer {
-  grid-column-start: 1;
-  grid-column-end: 3;
-  border: 3px solid blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: footer;
+  border-top: 1px solid #d3d3d3;
+  background-color: #f7f7f7;
 }
 
 #home {
@@ -92,6 +107,21 @@ button:active {
   width: 2.5rem;
 }
 
+.productCard {
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid #d3d3d3;
+}
+
+.productPic {
+  width: 200px;
+  height: 200px;
+}
 
 
 
@@ -136,13 +166,6 @@ form[action$="destroy"] button {
   white-space: nowrap;
   border-width: 0;
 }
-
-/* #root {
-  display: flex;
-  height: 100%;
-  width: 100%;
-} */
-
 
 
 #sidebar > * {
