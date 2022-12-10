@@ -9,21 +9,18 @@ export default function Cart(props) {
   const { state: { cartInfo } = {} } = useLocation();
   const navigate = useNavigate()
   
-function displayProducts() {
-  console.log(cartInfo)
-}
 
 return (
   <div id="Cart">
     <header className="header">
-      <h1>Welcome to the Store</h1>
+      <h1>SuperUltraGolf.com</h1>
+      <h4>Super Deals, Ultra Savings, all the time!</h4>
 
       <button onClick={() => 
         navigate('/', {state: {cartItems: cartInfo}})} className='homeButton' >
         <img src={home} className="homeIcon" alt="homepage" />
         <p>Home</p>
       </button>
-      <button onClick={displayProducts}>eweggw</button>
     </header>
 
    
@@ -35,7 +32,7 @@ return (
     <div className="itemContainer">
       {cartInfo.map(item => (
               <div className="cartCard" key ={item.name}>
-              <img src={item.image} className="cartIcon" alt="shopping cart" />
+              <img src={item.image} className="productPic" alt={item.name} />
                 <span className="name"> {item.name}</span>
                 <div className="price">{item.price}</div>
                 <div className="description">{item.description}</div>

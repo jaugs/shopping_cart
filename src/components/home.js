@@ -29,8 +29,7 @@ function Home(props) {
     {props.products.map(item => (
               <div className="productCard" key ={item.name}>
                <img src={item.image} className="productPic" alt={item.name}/>
-               <h3 className="name"> {item.name}</h3>
-               <div className="price">${item.price}</div>
+               <div className="name"> {item.name} ${item.price}</div>
                <div className="description">{item.description}</div>
                <button onClick={() => {addtoCart(item)}} className="buy">Add to Cart</button>
               </div>

@@ -44,26 +44,26 @@ const navigate = useNavigate()
 //   else return '';
 // }
 
-function findprops() {
-  let price = cartItems.reduce((total, cartItem) => total += parseInt(cartItem.price), 0)
-  console.log(price)
-}
+// function findprops() {
+//   let price = cartItems.reduce((total, cartItem) => total += parseInt(cartItem.price), 0)
+//   console.log(price)
+// }
 
 function handleFilter(e) {
   let newFilter = e.target.innerText
-  console.log(newFilter)
-  console.log(typeof(e.target.innerText))
+  if (newFilter === 'Reset Filters') {
+    setFilteredProducts(products)
+    return
+  }
   let newProducts = products.filter(item => item.category === newFilter)
-  console.log(newProducts)
   setFilteredProducts(newProducts)
-
 }
 
   return (
     <div className="App">
       <header className="header">
-        <h1>Welcome to the Store</h1>
-       
+        <h1>SuperUltraGolf.com</h1>
+       <h4>Super Deals, Ultra Savings, all the time!</h4>
       {/* <Link
         to='/cart'
         state={{cartInfo: cartItems}}
@@ -75,10 +75,10 @@ function handleFilter(e) {
       <button onClick={() => 
         navigate('/cart', {state: {cartInfo: cartItems}})} className='cartButton' >
         <img src={shoppingCart} className="cartIcon" alt="shopping cart" />
-        <p>${totalPrice}</p>
+        {(totalPrice === 0) ? (<p>Your Cart</p>) : (<p>${totalPrice}</p>)}
       </button>
 
-        <button onClick={findprops}> sdfsdfsdfsdf</button>
+        {/* <button onClick={findprops}> sdfsdfsdfsdf</button> */}
       </header>
 
       <div id="sidebar">
@@ -123,6 +123,9 @@ function handleFilter(e) {
             </li>
             <li>
               <button className="linkButton" onClick={handleFilter}>Accessories</button>
+            </li>
+            <li>
+              <button className="linkButton" onClick={handleFilter}>Reset Filters</button>
             </li>
           </ul>
         </nav>
