@@ -9,6 +9,9 @@ import shoppingCart from './images/cart.svg';
 
 function App() {
 
+
+  const [search, setSearch] = useState('')
+
   const [filteredProducts, setFilteredProducts] = useState(products)
 
   const [totalPrice, setTotalPrice] = useState(0)
@@ -58,6 +61,18 @@ function handleFilter(e) {
   let newProducts = products.filter(item => item.category === newFilter)
   setFilteredProducts(newProducts)
 }
+function handleChange(e) {
+  setSearch(e.target.value)
+}
+
+function handleSearch(e) {
+  e.preventDefault()
+  let searchUpperCase = search.toUpperCase()
+  let searchProducts = products.filter(item => item.name.toUpperCase().includes(searchUpperCase) ||
+   item.description.toUpperCase().includes(searchUpperCase) ||
+   item.category.toUpperCase().includes(searchUpperCase))
+  setFilteredProducts(searchProducts)
+}
 
   return (
     <div className="App">
@@ -84,13 +99,13 @@ function handleFilter(e) {
       <div id="sidebar">
         <h1>Search and Filter</h1>
         <div>
-          <form id="search-form" role="search">
+          <form id="search-form" onSubmit={handleSearch}>
             <input
-              id="q"
-              aria-label="Search Products"
+              id="form_input"
               placeholder="Search Products"
               type="search"
-              name="q"
+              name="lookup"
+              onChange={handleChange}
             />
             <div
               id="search-spinner"
@@ -101,7 +116,7 @@ function handleFilter(e) {
               className="sr-only"
               aria-live="polite"
             ></div>
-             <button type="submit">New</button>
+             <button className="linkButton" type="submit">Submit</button>
           </form>
            
         </div>
