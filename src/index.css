@@ -194,6 +194,25 @@ button:active {
   width: 3rem;
 }
 
+.subtotal, .tax, .orderTotal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 10rem; 
+  align-self: left;
+}
+
+.subtotal div, .tax div, .orderTotal div{
+  align-self: right;
+  font-weight: 700;
+}
+
+.shippingLabel {
+  width: 23rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
 .cartPrice {
   font-size: 22px;
   font-weight: 600;
@@ -210,8 +229,13 @@ padding: 10px;
 display: flex;
 flex-direction: column;
 justify-content: flex-start;
-align-items: center;
+align-items: flex-start;
 gap:10px
+}
+
+.summaryContainer h3 {
+  display: flex;
+  margin-left: 10rem;
 }
 
 .summary {
@@ -219,14 +243,14 @@ gap:10px
   font-weight: 400;
   box-shadow: 0 0 15px #ebebeb;
   width: 25rem;
-  height: 25rem;
+  height: 21rem;
   border: 1px solid #d3d3d3;
   border-radius: 9px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px;
+  gap: 15px;
   padding:20px;
 }
 
@@ -253,7 +277,7 @@ select {
 .select {
   width: 100%;
   min-width: 15ch;
-  max-width: 30ch;
+  max-width: 22rem;
   border: 1px solid var(--select-border);
   border-radius: 0.25em;
   padding: 0.25em 0.5em;

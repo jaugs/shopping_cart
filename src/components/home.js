@@ -13,12 +13,13 @@ function Home(props) {
 
 
   function addtoCart (item) {
+    item.quantity = item.quantity + 1
     cartArr.push(item)
-    //console.log(cartArr)
+    console.log(cartArr)
     props.setcartItems(cartArr)
-    //console.log(props.cartItems)
-    let price = props.cartItems.reduce((total, cartItem) => total += parseInt(cartItem.price), 0)
-    console.log(price)
+    console.log(props.cartItems)
+    let price = props.cartItems.reduce((total, cartItem) => total += parseInt(cartItem.price * cartItem.quantity), 0)
+   //console.log(price)
     if (price) {
     props.setTotalPrice(price)
     } else props.setTotalPrice(item.price)

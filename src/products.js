@@ -46,7 +46,7 @@ const products = [
     {name: 'Putter',
      category: 'Clubs',
      price: '199',
-     description: 'Johnny Augsburger 10EQP Model, Oversized Grip',
+     description: '10EQP Model, Oversized Grip',
      id: 103,
      quantity: 0,
      image: putter
