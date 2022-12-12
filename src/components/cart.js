@@ -6,9 +6,11 @@ import home from '../images/home.svg'
 
 export default function Cart(props) {
 
-  const [amount, setAmount] = useState(0)
-  const [shipping, setShipping] = useState(0)
   const { state: { cartInfo } = {} } = useLocation();
+  const [amount, setAmount] = useState(0)
+  const [shipping, setShipping] = useState('9.95')
+ 
+  const [subtotal, setSubtotal] = useState(cartInfo.reduce((total, cartInfo) => total += parseInt(cartInfo.price), 0))
   const navigate = useNavigate()
   
 function handleQuantityChange(e) {
@@ -23,6 +25,7 @@ function updateQuantity(e) {
 function handleShipping(e) {
   e.preventDefault()
   setShipping(e.target.value)
+  console.log(shipping)
 }
 
 return (
@@ -63,27 +66,29 @@ return (
               ))}
     </div>
 
-    <div className="summaryContainer">Order Summary
+    <div className="summaryContainer">
+    <h3>Order Summary</h3>
+    <div className="summary">
         <form className="quantityForm" onClick={updateQuantity}>
           <input className="couponInput" type= 'text' placeholder= 'Enter Coupon Code'
                  name= "coupon"  onChange={handleQuantityChange}></input>
           <button className="couponButton" type="submit">Apply</button>
         </form>
-        <div className="subtotal">{amount}</div>
+        <div className="subtotal">Subtotal: ${subtotal}</div>
 
         <label htmlFor="shippingSelect">Select Shipping:</label>
         <div className="select">
         <select id="shippingSelect" value={shipping} onChange={handleShipping}>
-          <option value="free">5 day</option>
-          <option value="express">2 day</option>
-          <option value="express1day">1 day</option>
+          <option value="9.95">Ground (3-5 Business Days): $9.95 </option>
+          <option value="19.95">Priority (2 Business Days): $19.95</option>
+          <option value="29.95">Express (Next Day): $29.95</option>
         </select>
         <span className="focus"></span>
         </div>
-        <div className="tax">Tax:</div>
-        <div className="orderTotal">Order Total:</div>
+        <div className="tax">Tax: ${subtotal * .06}</div>
+        <div className="orderTotal">Order Total: ${(subtotal * 0.06) + subtotal + parseInt(shipping)}</div>
         <button className="checkout">Secure Checkout</button>
-      
+        </div>
       </div>
         
     <div className='footer'>by JAUGS 2022</div>
