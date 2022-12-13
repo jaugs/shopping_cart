@@ -6,6 +6,7 @@ import products from './products'
 import Home from './components/home';
 import shoppingCart from './images/cart.svg';
 
+// fix cart ID system
 
 function App() {
 
@@ -27,31 +28,6 @@ function App() {
 
 const navigate = useNavigate()
   
-// useEffect(() => {
-  
-//    let price = cartItems.reduce((total, cartItem) => total += parseInt(cartItem.price), 0)
-//    console.log(price)
-//     displayPrice(price)
-  
-//    }, [cartItems])
-
-  //  function displayPrice(price) {
-  //   setTotalPrice(price)
-  //  }
-
-// function getTotalPrice() {
-//   let price = cartItems.reduce((total, cartItem) => total += parseInt(cartItem.price), 0)
-//   if (price) {
-//    return price
-//   }
-//   else return '';
-// }
-
-// function findprops() {
-//   let price = cartItems.reduce((total, cartItem) => total += parseInt(cartItem.price), 0)
-//   console.log(price)
-// }
-
 function handleFilter(e) {
   let newFilter = e.target.innerText
   if (newFilter === 'Reset Filters') {

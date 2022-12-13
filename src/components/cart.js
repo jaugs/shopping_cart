@@ -19,6 +19,10 @@ function handleRemove(item) {
   
   let newCartItems = cartItems.filter(product => product.name !== item.name)
   console.log(newCartItems)
+  if (newCartItems.length === 0) {
+    let temp = {name: ''}
+    newCartItems.push(temp)
+  }
   setcartItems(newCartItems)
 }
 
@@ -61,7 +65,7 @@ return (
       
     <div className="itemContainer">
     <h3>Your Cart</h3>
-      {cartItems.map(item => (
+      {(cartItems[0].name !== '') ? (cartItems.map(item => (
               <div className="cartCard" key ={item.name}>
                 <div className="imageContainer"><img src={item.image} className="cartPic" alt={item.name} /></div>
                 <div className="cartText"> 
@@ -78,7 +82,10 @@ return (
                 <button className="removeButton" type="submit" onClick={() => {handleRemove(item)}}>Remove</button> </div>
                 <div className="cartPrice">${item.price}</div>
               </div>
-              ))}
+              ))) : 
+              (<div className="cartCard">
+                <div className="emptyText">Your shoping cart is empty</div>
+              </div>)}
     </div>
 
     <div className="summaryContainer">
@@ -116,23 +123,3 @@ return (
   </div>
   )
   }
-
-// function Favorite({ contact }) {
-//   // yes, this is a `let` for later
-//   let favorite = contact.favorite;
-//   return (
-//     <Form method="post">
-//       <button
-//         name="favorite"
-//         value={favorite ? "false" : "true"}
-//         aria-label={
-//           favorite
-//             ? "Remove from favorites"
-//             : "Add to favorites"
-//         }
-//       >
-//         {favorite ? "★" : "☆"}
-//       </button>
-//     </Form>
-//   );
-// }

@@ -172,6 +172,15 @@ button:active {
   width: 25rem;
 }
 
+.emptyText {
+  width: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  padding: 10px;
+}
+
 .removeButton {
   color: #da6a20
 }
