@@ -1,7 +1,7 @@
 import './App.css';
 import { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
-//import Cart from './components/cart';
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
+import Cart from './components/cart';
 import products from './products'
 import Home from './components/home';
 import shoppingCart from './images/cart.svg';
@@ -55,20 +55,27 @@ function handleSearch(e) {
       <header className="header">
         <h1>SuperUltraGolf.com</h1>
        <h4>Super Deals, Ultra Savings, all the time!</h4>
-      {/* <Link
+      <Link
         to='/cart'
         state={{cartInfo: cartItems}}
         className='cartButton'>
         <img src={shoppingCart} className="cartIcon" alt="shopping cart" />
         <p>${cartItems.reduce((total, cartItem) => total += parseInt(cartItem.price), 0)}</p>
-      </Link> */}
-
+      </Link>
+{/* 
       <button onClick={() => 
         navigate('/cart', {state: {cartInfo: cartItems}})} className='cartButton' >
         <img src={shoppingCart} className="cartIcon" alt="shopping cart" />
         {(totalPrice === 0) ? (<p>Your Cart</p>) : (<p>${totalPrice}</p>)}
-      </button>
 
+        */}
+
+      {/* </button> */}
+
+      {/* <Routes>
+          <Route path='/cart' element={ <Cart cartInfo = {cartItems}/>} />
+        </Routes>
+         */}
         {/* <button onClick={findprops}> sdfsdfsdfsdf</button> */}
       </header>
 
@@ -98,11 +105,7 @@ function handleSearch(e) {
         </div>
         <nav>
           <ul>
-            <li >
-              <Link to={`Cart`}>
-              Cart
-              </Link>
-            </li>
+            <li><h1>Categories</h1></li>
             <li>
               <button className="linkButton" onClick={handleFilter}>Clubs</button>
             </li>

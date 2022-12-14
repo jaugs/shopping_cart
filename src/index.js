@@ -3,38 +3,35 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {
-  createBrowserRouter,
-  RouterProvider,
+  Route, BrowserRouter, Routes,
 } from "react-router-dom";
-import ErrorPage from "./components/error";
+// import ErrorPage from "./components/error";
 import Cart from "./components/cart";
 import App from "./App";
-import products from "./products"
+
 //import Home from './components/home';
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />,
-   // loader: rootLoader,
-   // action: rootAction,
-    children: [
-      {
-        path: "cartmini",
-        element: <miniCart products = {products} />,
-      },
-    ],
-  },
-  {
-    path: "cart",
-    element: <Cart  />,
-    errorElement: <ErrorPage />,
-  },
-]);
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <App />,
+//     errorElement: <ErrorPage />,
+//   },
+//   {
+//     path: "cart",
+//     element: <Cart  />,
+//     errorElement: <ErrorPage />,
+//   },
+// ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes> 
+    </BrowserRouter>
+    {/* <RouterProvider router={router} /> */}
   </React.StrictMode>
 );
 // If you want to start measuring performance in your app, pass a function

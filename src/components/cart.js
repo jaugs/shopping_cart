@@ -7,6 +7,8 @@ import home from '../images/home.svg'
 export default function Cart(props) {
 
   const { state: { cartInfo } = {} } = useLocation();
+  
+
   const [cartItems, setcartItems] = useState(cartInfo);
 
   const [amount, setAmount] = useState(0)
@@ -91,11 +93,11 @@ return (
     <div className="summaryContainer">
     <h3>Order Summary</h3>
     <div className="summary">
-        <form className="quantityForm" onClick={updateCoupon}>
+        <div className="quantityForm" onClick={updateCoupon}>
           <input className="couponInput" type= 'text' placeholder= 'Enter Coupon Code'
-                 name= "coupon"  onChange={updateQuantity}></input>
-          <button className="couponButton" type="submit">Apply</button>
-        </form>
+                 name= "coupon"></input>
+          <button className="couponButton">Apply</button>
+        </div>
         <div className="subtotal">Subtotal: 
           <div>${subtotal}</div>
         </div>

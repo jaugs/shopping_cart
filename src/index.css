@@ -278,7 +278,7 @@ select {
 }
 
 :root {
-  --select-border: #777;
+  --select-border: #d3d3d3;
   --select-focus: blue;
   --select-arrow: var(--select-border);
 }
@@ -340,6 +340,7 @@ select:focus + .focus {
   border: 1px solid #d3d3d3;
   border-radius: 9px;
   padding: 5px;
+  box-shadow: 0 0 15px #ebebeb;
 }
 
 .cartPic {
@@ -393,7 +394,6 @@ select:focus + .focus {
   align-items: center;
   margin: 0;
   padding: 1rem 2rem;
-  border-top: 1px solid #e3e3e3;
   line-height: 1;
 }
 
