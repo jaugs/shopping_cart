@@ -1,24 +1,20 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import {Link, useLocation } from "react-router-dom";
 import home from '../images/home.svg'
 
 
 
 export default function Cart(props) {
 
-  const { state: { cartInfo } = {} } = useLocation();
-  
-
-  const [cartItems, setcartItems] = useState(cartInfo);
-
+ // const { //st/ate: { //c/artInfo } = {} } = u/seLocation();
+  const location = useLocation()
+  const [cartItems, setcartItems] = useState(location.state);
   const [amount, setAmount] = useState(0)
   const [shipping, setShipping] = useState('9.95')
  
   const [subtotal, setSubtotal] = useState((cartItems.reduce((total, cartItems) => total += parseInt(cartItems.price * cartItems.quantity), 0)).toFixed(2))
-  const navigate = useNavigate()
-  
-function handleRemove(item) {
-  
+
+  function handleRemove(item) {
   let newCartItems = cartItems.filter(product => product.name !== item.name)
   console.log(newCartItems)
   if (newCartItems.length === 0) {
@@ -45,7 +41,7 @@ function handleShipping(e) {
 }
 
 function updateCoupon(e) {
-  console.log(e)
+  console.log(cartItems)
 }
 
 //onKeyDown={(e) => {if (!/[0-9]/.test(e.key)){e.preventDefault()}}}
@@ -54,16 +50,22 @@ return (
     <header className="header">
       <h1>SuperUltraGolf.com</h1>
       <h4>Super Deals, Ultra Savings, all the time!</h4>
+ 
+       <Link
+        to='/'
+        state={cartItems}
+        className='cartButton'>
+        <img src={home} className="homeIcon" alt="homepage" />
+        <p>${cartItems.reduce((total, cartItem) => total += parseInt(cartItem.price), 0)}</p> 
+      </Link> 
+ 
 
-      <button onClick={() => 
+      {/* <button onClick={() => 
         navigate('/', {state: {cartItems: cartInfo}})} className='homeButton' >
         <img src={home} className="homeIcon" alt="homepage" />
         <p>Home</p>
-      </button>
+      </button> */}
     </header>
-    {/* <div id="sidebar">
-        <h1>Search and Filter</h1>
-      </div> */}
       
     <div className="itemContainer">
     <h3>Your Cart</h3>

@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import {
   Route, BrowserRouter, Routes,
 } from "react-router-dom";
-// import ErrorPage from "./components/error";
+import ErrorPage from "./components/error";
 import Cart from "./components/cart";
 import App from "./App";
 
@@ -27,8 +27,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route 
+          path="/" 
+          element={<App />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes> 
     </BrowserRouter>
     {/* <RouterProvider router={router} /> */}

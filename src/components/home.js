@@ -12,7 +12,10 @@ function Home(props) {
   
 
 
-  function addtoCart (item) {
+  function addtoCart (e, item) {
+    if (cartArr.includes(item)) {
+      return
+    }
     item.quantity = item.quantity + 1
     cartArr.push(item)
     console.log(cartArr)
@@ -23,6 +26,8 @@ function Home(props) {
     if (price) {
     props.setTotalPrice(price)
     } else props.setTotalPrice(item.price)
+    console.log(e.target)
+    e.target.innerText = ``
     }
 
   return (
@@ -32,7 +37,8 @@ function Home(props) {
                <img src={item.image} className="productPic" alt={item.name}/>
                <div className="name"> {item.name} ${item.price}</div>
                <div className="description">{item.description}</div>
-               <button onClick={() => {addtoCart(item)}} className="buy">Add to Cart</button>
+               {(cartArr.includes(item)) ? (<button>Item Added</button>) : 
+               (<button onClick={(e) => {addtoCart(e, item)}} className="buy">Add to Cart</button>)}
               </div>
     ))}
 

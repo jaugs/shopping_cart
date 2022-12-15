@@ -1,7 +1,7 @@
 import './App.css';
 import { useState } from 'react';
-import { Link, Route, Routes, useNavigate } from "react-router-dom";
-import Cart from './components/cart';
+import { Link, useLocation } from "react-router-dom";
+//import Cart from './components/cart';
 import products from './products'
 import Home from './components/home';
 import shoppingCart from './images/cart.svg';
@@ -10,23 +10,24 @@ import shoppingCart from './images/cart.svg';
 
 function App() {
 
-
+  const location = useLocation()
   const [search, setSearch] = useState('')
 
   const [filteredProducts, setFilteredProducts] = useState(products)
 
   const [totalPrice, setTotalPrice] = useState(0)
 
-  const [cartItems, setcartItems] = useState([{
+  const [cartItems, setcartItems] = useState(() => {
+    if (location.state.length !== 0 ) 
+      {return location.state} 
+    else { return [{
     name: '',
     category: '',
     price: '',
     quantity: '',
     description: '',
     image: ''
-  }])
-
-const navigate = useNavigate()
+  }]}})
   
 function handleFilter(e) {
   let newFilter = e.target.innerText
@@ -49,18 +50,23 @@ function handleSearch(e) {
    item.category.toUpperCase().includes(searchUpperCase))
   setFilteredProducts(searchProducts)
 }
+function locationfind(){
+  console.log(location.state)
+}
 
   return (
     <div className="App">
       <header className="header">
-        <h1>SuperUltraGolf.com</h1>
+      <button onClick={locationfind}>eeee</button>
+        <h2>SuperUltraGolf.com</h2>
        <h4>Super Deals, Ultra Savings, all the time!</h4>
       <Link
         to='/cart'
-        state={{cartInfo: cartItems}}
+        state={cartItems}
         className='cartButton'>
         <img src={shoppingCart} className="cartIcon" alt="shopping cart" />
-        <p>${cartItems.reduce((total, cartItem) => total += parseInt(cartItem.price), 0)}</p>
+        {(totalPrice === 0) ? (<p>Your Cart</p>) : (<p>${totalPrice}</p>)}
+        
       </Link>
 {/* 
       <button onClick={() => 
