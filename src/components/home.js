@@ -2,31 +2,27 @@
 //import { driver } from "localforage"
 const cartArr = []
 
+
 function Home(props) {
 
 
 
-  // useEffect(() => {
-  //   addtoCart()
-  // });
-  
-
-
   function addtoCart (e, item) {
-    if (cartArr.includes(item)) {
+   //let newArr = cartArr.filter(product => produc.t !== props.cartArr)
+   // console.log(newArr)
+    console.log(cartArr)
+    console.log(props.cartItems)
+    if (props.cartItems.includes(item)) {
       return
     }
     item.quantity = item.quantity + 1
     cartArr.push(item)
-    console.log(cartArr)
     props.setcartItems(cartArr)
-    console.log(props.cartItems)
     let price = props.cartItems.reduce((total, cartItem) => total += parseInt(cartItem.price * cartItem.quantity), 0)
    //console.log(price)
     if (price) {
     props.setTotalPrice(price)
     } else props.setTotalPrice(item.price)
-    console.log(e.target)
     e.target.innerText = ``
     }
 
@@ -37,7 +33,7 @@ function Home(props) {
                <img src={item.image} className="productPic" alt={item.name}/>
                <div className="name"> {item.name} ${item.price}</div>
                <div className="description">{item.description}</div>
-               {(cartArr.includes(item)) ? (<button>Item Added</button>) : 
+               {(props.cartItems.includes(item)) ? (<button>Item Added</button>) : 
                (<button onClick={(e) => {addtoCart(e, item)}} className="buy">Add to Cart</button>)}
               </div>
     ))}

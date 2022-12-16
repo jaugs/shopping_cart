@@ -9,20 +9,6 @@ import ErrorPage from "./components/error";
 import Cart from "./components/cart";
 import App from "./App";
 
-//import Home from './components/home';
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <App />,
-//     errorElement: <ErrorPage />,
-//   },
-//   {
-//     path: "cart",
-//     element: <Cart  />,
-//     errorElement: <ErrorPage />,
-//   },
-// ]);
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -34,7 +20,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="*" element={<ErrorPage />} />
       </Routes> 
     </BrowserRouter>
-    {/* <RouterProvider router={router} /> */}
   </React.StrictMode>
 );
 // If you want to start measuring performance in your app, pass a function

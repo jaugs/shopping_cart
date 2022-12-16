@@ -15,20 +15,35 @@ function App() {
 
   const [filteredProducts, setFilteredProducts] = useState(products)
 
-  const [totalPrice, setTotalPrice] = useState(0)
+  //const [totalPrice, setTotalPrice] = useState(0)
 
   const [cartItems, setcartItems] = useState(() => {
-    if (location.state.length !== 0 ) 
-      {return location.state} 
-    else { return [{
-    name: '',
-    category: '',
-    price: '',
-    quantity: '',
-    description: '',
-    image: ''
-  }]}})
+    if ((location.state === 0) || (location.state === null))
+      { 
+        console.log(location.state)
+        return [{
+          name: '',
+          category: '',
+          price: '',
+          quantity: '',
+          description: '',
+          image: ''
+        }]
+      } 
+    else { 
+      
+      return location.state
+}})
   
+const [totalPrice, setTotalPrice] = useState(() => {
+  if ((cartItems[0].name === '') || (cartItems === null))
+    { 
+      return 0} 
+    else {
+      return cartItems.reduce((total, cartItem) => total += parseInt(cartItem.price * cartItem.quantity), 0)}})
+
+  //const [cartItems, setcartItems] = useState(products)
+
 function handleFilter(e) {
   let newFilter = e.target.innerText
   if (newFilter === 'Reset Filters') {
@@ -52,12 +67,25 @@ function handleSearch(e) {
 }
 function locationfind(){
   console.log(location.state)
+  console.log(cartItems)
+}
+
+function locationdelete() {
+  setcartItems([{
+    name: '',
+    category: '',
+    price: '',
+    quantity: '',
+    description: '',
+    image: ''
+  }])
 }
 
   return (
     <div className="App">
       <header className="header">
       <button onClick={locationfind}>eeee</button>
+      <button onClick={locationdelete}>delete</button>
         <h2>SuperUltraGolf.com</h2>
        <h4>Super Deals, Ultra Savings, all the time!</h4>
       <Link
@@ -68,21 +96,7 @@ function locationfind(){
         {(totalPrice === 0) ? (<p>Your Cart</p>) : (<p>${totalPrice}</p>)}
         
       </Link>
-{/* 
-      <button onClick={() => 
-        navigate('/cart', {state: {cartInfo: cartItems}})} className='cartButton' >
-        <img src={shoppingCart} className="cartIcon" alt="shopping cart" />
-        {(totalPrice === 0) ? (<p>Your Cart</p>) : (<p>${totalPrice}</p>)}
 
-        */}
-
-      {/* </button> */}
-
-      {/* <Routes>
-          <Route path='/cart' element={ <Cart cartInfo = {cartItems}/>} />
-        </Routes>
-         */}
-        {/* <button onClick={findprops}> sdfsdfsdfsdf</button> */}
       </header>
 
       <div id="sidebar">

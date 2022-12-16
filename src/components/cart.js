@@ -4,7 +4,7 @@ import home from '../images/home.svg'
 
 
 
-export default function Cart(props) {
+export default function Cart() {
 
  // const { //st/ate: { //c/artInfo } = {} } = u/seLocation();
   const location = useLocation()
@@ -19,8 +19,8 @@ export default function Cart(props) {
   console.log(newCartItems)
   if (newCartItems.length === 0) {
     let temp = {name: ''}
-    newCartItems.push(temp)
-  }
+   newCartItems.push(temp)
+ }
   setcartItems(newCartItems)
 }
 
@@ -56,7 +56,6 @@ return (
         state={cartItems}
         className='cartButton'>
         <img src={home} className="homeIcon" alt="homepage" />
-        <p>${cartItems.reduce((total, cartItem) => total += parseInt(cartItem.price), 0)}</p> 
       </Link> 
  
 
@@ -79,7 +78,7 @@ return (
                 </div>
                 <div className="quantityContainer">
                   <div className="quantityForm">
-                  <input className="quantityInput" type= 'number' onChange={handleQuantityChange} defaultValue = '1'
+                  <input className="quantityInput" type= 'number' onChange={handleQuantityChange} defaultValue = {item.quantity}
                          name= "quantity"  ></input>
                   <button className="quantityButton" type="submit" onClick={() => {updateQuantity(item)}}>Update</button>
                 </div>

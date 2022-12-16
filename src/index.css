@@ -139,6 +139,7 @@ button:active {
   border-radius: 9px;
 }
 
+
 .imageContainer {
   display: flex;
   align-items: flex-start;
@@ -341,6 +342,10 @@ select:focus + .focus {
   border-radius: 9px;
   padding: 5px;
   box-shadow: 0 0 15px #ebebeb;
+}
+
+.productCard:hover {
+  border: 1px solid #3992ff;
 }
 
 .cartPic {
