@@ -1,27 +1,27 @@
 import { useState } from "react";
-import {Link, useLocation } from "react-router-dom";
+import {Link} from "react-router-dom";
 import home from '../images/home.svg'
 
 
 
-export default function Cart() {
+export default function Cart(props) {
 
  // const { //st/ate: { //c/artInfo } = {} } = u/seLocation();
-  const location = useLocation()
-  const [cartItems, setcartItems] = useState(location.state);
-  const [amount, setAmount] = useState(0)
-  const [shipping, setShipping] = useState('9.95')
+  // const location = useLocation()
+  // const [cartItems, setcartItems] = useState(location.state);
+   const [amount, setAmount] = useState(0)
+   const [shipping, setShipping] = useState('9.95')
  
-  const [subtotal, setSubtotal] = useState((cartItems.reduce((total, cartItems) => total += parseInt(cartItems.price * cartItems.quantity), 0)).toFixed(2))
 
   function handleRemove(item) {
-  let newCartItems = cartItems.filter(product => product.name !== item.name)
-  console.log(newCartItems)
-  if (newCartItems.length === 0) {
+    item.inCart = false
+    let newCartItems = props.cartItems.filter(product => product.inCart === true)
+    console.log(newCartItems)
+   if (newCartItems.length === 0) {
     let temp = {name: ''}
    newCartItems.push(temp)
  }
-  setcartItems(newCartItems)
+ props.setcartItems(newCartItems)
 }
 
 function handleQuantityChange(e) {
@@ -32,7 +32,7 @@ function handleQuantityChange(e) {
 
 function updateQuantity(item) {
   item.quantity = amount
-  setSubtotal((cartItems.reduce((total, cartItems) => total += parseInt(cartItems.price * cartItems.quantity), 0).toFixed(2)))
+  props.setSubtotal((props.cartItems.reduce((total, cartItems) => total += parseInt(cartItems.price * cartItems.quantity), 0).toFixed(2)))
 }
 
 function handleShipping(e) {
@@ -41,7 +41,7 @@ function handleShipping(e) {
 }
 
 function updateCoupon(e) {
-  console.log(cartItems)
+  console.log(props.cartItems)
 }
 
 //onKeyDown={(e) => {if (!/[0-9]/.test(e.key)){e.preventDefault()}}}
@@ -53,7 +53,6 @@ return (
  
        <Link
         to='/'
-        state={cartItems}
         className='cartButton'>
         <img src={home} className="homeIcon" alt="homepage" />
       </Link> 
@@ -68,7 +67,7 @@ return (
       
     <div className="itemContainer">
     <h3>Your Cart</h3>
-      {(cartItems[0].name !== '') ? (cartItems.map(item => (
+      {(props.cartItems[0].name !== '') ? (props.cartItems.map(item => (
               <div className="cartCard" key ={item.name}>
                 <div className="imageContainer"><img src={item.image} className="cartPic" alt={item.name} /></div>
                 <div className="cartText"> 
@@ -100,7 +99,7 @@ return (
           <button className="couponButton">Apply</button>
         </div>
         <div className="subtotal">Subtotal: 
-          <div>${subtotal}</div>
+          <div>${props.subtotal}</div>
         </div>
 
         <label className="shippingLabel" htmlFor="shippingSelect">Select Shipping:</label>
@@ -113,10 +112,10 @@ return (
         <span className="focus"></span>
         </div>
         <div className="tax">Tax:
-          <div> ${(subtotal * .06).toFixed(2)}</div>
+          <div> ${(props.subtotal * .06).toFixed(2)}</div>
         </div>
         <div className="orderTotal">Order Total: 
-          <div>${(parseInt(subtotal * 0.06) + parseInt(subtotal) + parseInt(shipping)).toFixed(2)}</div>
+          <div>${(parseInt(props.subtotal * 0.06) + parseInt(props.subtotal) + parseInt(shipping)).toFixed(2)}</div>
         </div>
         <button className="checkout">Secure Checkout</button>
         </div>

@@ -2,24 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {
-  Route, BrowserRouter, Routes,
-} from "react-router-dom";
-import ErrorPage from "./components/error";
-import Cart from "./components/cart";
+
 import App from "./App";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route 
-          path="/" 
-          element={<App />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes> 
-    </BrowserRouter>
+     <App />
   </React.StrictMode>
 );
 // If you want to start measuring performance in your app, pass a function
